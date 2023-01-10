@@ -7,7 +7,8 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var httpService = MyHttpService("127.0.0.1", 9988)
+        private var httpService = MyHttpService(HTTP_IP, HTTP_PORT)
+//    private var httpService = MyHttpServiceWeb("127.0.0.1", 9988)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,10 +32,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun startHttpService() {
         try {
             httpService.start()
+//            httpService.asset = assets
             println("服务启动完成")
         } catch (e: IOException) {
             e.printStackTrace()
-            println("服务启动错误")
+            println("服务启动错误  "+e.printStackTrace())
         }
     }
 
